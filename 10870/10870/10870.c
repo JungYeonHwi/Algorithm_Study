@@ -18,7 +18,6 @@ int main() {
 		result = f1 + f2;
 		f2 = f1;
 		f1 = result;
-		printf("%d %d %d\n", f1, f2, result);
 	}
 
 	printf("%d", result);
