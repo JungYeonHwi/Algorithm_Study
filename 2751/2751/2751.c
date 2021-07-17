@@ -54,7 +54,7 @@ int main() {
 
 	heap(arr, N);
 
-    for (int i = 0; i < N; i++) printf("%d", arr[i]);
+    for (int i = 0; i < N; i++) printf("%d\n", arr[i]);
 
     return 0;
 }
