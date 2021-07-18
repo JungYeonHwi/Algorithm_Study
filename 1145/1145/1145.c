@@ -20,11 +20,9 @@ int main()
         if (cnt >= 3) break;
 
         Min++;
-
     }
 
     printf("%d", Min);
-
 
 	return 0;
 }
