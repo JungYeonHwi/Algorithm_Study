@@ -10,7 +10,7 @@ int reverse(int num) {
     return reverse;
 }
 
-int main(void)
+int main()
 {
     int num;
     scanf("%d", &num);
