@@ -1,12 +1,13 @@
-V = int(input())
-List = list(map(str, input()))
-AList = []
-BList = []
+N = int(input())
 
-for i in List : 
-    if i == 'A' : AList.append(i)
-    else : BList.append(i)
+for i in range(N) :
+    Y = K = 0
     
-if (len(AList) > len(BList)) : print("A")
-elif (len(AList) < len(BList)) : print("B")
-else : print("Tie")
+    for j in range(9) :  
+        y, k = map(int, input().split())
+        Y += y
+        K += k
+    
+    if Y > K : print('Yonsei')
+    elif Y < K : print('Korea')
+    else : print("Draw")
