@@ -9,3 +9,4 @@ while (1) :
     if (sum(List) == n) : print(n, " = ", " + ".join(str(i) for i in List), sep="")
     else:
         print(n, "is NOT perfect.")
+        
