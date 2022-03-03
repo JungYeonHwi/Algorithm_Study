@@ -1,0 +1,11 @@
+N = int(input())
+a = list(input())
+a_len = len(a)
+
+for _ in range(N - 1) : 
+    b = list(input())
+    for j in range(a_len):
+        if a[j] != b[j]:
+            a[j] = '?'
+            
+print(''.join(a))
