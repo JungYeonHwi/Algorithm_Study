@@ -1,12 +1,17 @@
-N = int(input())
-cups = [1,2,3]
+s = input().split('-')
+num = []
 
-for _ in range(N):
-    x, y = map(int, input().split())
+for i in s : 
+    cnt = 0
+    s = i.split('+')
     
-    xi = cups.index(x)
-    yi = cups.index(y)
+    for j in s : 
+        cnt += int(j)
+    num.append(cnt)
     
-    cups[xi], cups[yi] = cups[yi], cups[xi]
+n = num[0]
+
+for i in range(1, len(num)) : 
+    n -= num[i]
     
-print(cups[0])
+print(n)
