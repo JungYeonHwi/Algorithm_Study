@@ -1,20 +1,23 @@
-n = int(input())
-tList = []
-pList = []
-dp = []
+n = int(input()) # 일하는 총 날짜 n을 입력 받는다.
+tList = [] # 상담을 완료하는데 걸리는 시간을 저장하기 위한 list 이다.
+pList = [] # 상담을 했을 때 받을 수 있는 금액을 저장하기 위한 lsit 이다.
+dp = [] # 최대 수익을 저장하기 위한 lsit 이다.
 
-for _ in range(n) : 
-    a, b = map(int, input().split())
+for _ in range(n) : # 일하는 날짜 n 만큼 반복한다.
+    a, b = map(int, input().split()) # t와 p가 각각 한 줄씩 공백으로 입력되어 임시로 a와 b에 저장한다.
     
-    tList.append(a)
-    pList.append(b)
-    dp.append(b)
-dp.append(0)
+    tList.append(a) # 시간을 배열로 추가한다.
+    pList.append(b) # 금액을 배열로 추가한다.
+    dp.append(b) # 최대 수익을 금액으로 임시적으로 초기화 한다.
+dp.append(0) # n+1의 최대 수익을 이용하여 문제를 해결하기 위하여 추가한다. n+1일의 최대 수익은 없는 날이기 때문에 0이다.
     
-for i in range(n - 1, -1, -1) :
-    if tList[i] + i > n :
-        dp[i] = dp[i + 1]
-    else :
+for i in range(n - 1, -1, -1) : # 맨 마지막 날짜부터 확인하기 위해 반복한다.
+    if tList[i] + i > n : # 해당 날짜 + 상담 완료 시간이 최대 일하는 날짜 n 보다 넘어간다면
+        dp[i] = dp[i + 1] # n+1의 최댓값으로 한다.
+    else : # 해당 날짜 + 상담 완료 시간이 최대 일하는 날짜 n 보다 넘어가지 않는다면
         dp[i] = max(dp[i + 1], pList[i] + dp[i + tList[i]])
+        # 그 날짜+1의 최댓값과 그 날짜의 수익+ 그 날짜 이후의 최댓값 중 더 큰 것으로 한다.
+        
+    print(dp)
 
-print(dp[0])
+print(dp[0]) # 맨 마지막 날짜부터 확인하였기 때문에 제일 처음에 최댓값이 들어간다.
