@@ -1,16 +1,17 @@
-import sys
+import heapq # 우선순위 큐
 
-n = int(sys.stdin.readline())
-List = []
+N = int(input())
 
-for _ in range(n) : 
-    List.append(int(sys.stdin.readline()))
+cardList = list(int(input()) for _ in range(N))
+heapq.heapify(cardList)
+result = 0
 
-List.sort()
-answer = 0
 
-for i in range(n-1):
-    answer += List[i] + List[i+1]
-    List[i+1] = answer
-    
-print(answer)
+while len(cardList) != 1 :
+    num1 = heapq.heappop(cardList)
+    num2 = heapq.heappop(cardList)
+    s = num1 + num2
+    result += s
+    heapq.heappush(cardList, s)
+
+print(result)

@@ -199,6 +199,64 @@ A 0번 B 1번, C 4번
 
 **예제 출력**
 
-19
+4
+
+---
+
+<BOJ 1715> 카드 정렬하기
+
+**해결 방법 적용**
+
+- greedy algorithm 적용
+  - 선택 절차 : 최소 카드 A, B의 합을 구하기 위해 가장 작은 숫자 카드들을 선택
+  - 적절성 검사
+    - 1번 과정을 통해 선택된 카드들이 다른 카드들보다 높은지 검사
+    - 높다면 선택한 카드 취소
+  - 해답 검사 : 카드 합이 최소인지 검사
+- heapq module : 이진 트리 기반의 최소 힙 자료구조
+  - module import
+    ```
+    import heapq
+    ```
+  - 리스트를 heap으로 변환
+    ```
+    List = [4, 1, 3, 5, 2]
+    heapq.heapify(List)
+    print(List)
+    ```
+    ```
+    [1, 2, 3, 4, 5]
+    ```
+  - 원소 추가
+    ```
+    arr = []
+    heapq.heappush(arr, 2)
+    heapq.heappush(arr, 1)
+    heapq.heappush(arr, 4)
+    heapq.heappush(arr, 3)
+    print(arr)
+    ```
+    ```
+    [1, 2, 3, 4]
+    ```
+  - 원소 삭제
+    ```
+    print(arr.heappop(heap))
+    print(arr)
+    ```
+    ```
+    1
+    [2, 3, 4]
+    ```
+
+**예제 입력**
+
+10 20 30 40 50
+
+![1715](./Algorithm/1715.jpg)
+
+**예제 출력**
+
+30+60+90+150 = 330
 
 ---
