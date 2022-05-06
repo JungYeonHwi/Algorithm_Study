@@ -1,3 +1,294 @@
+# 알아두어야 하는 파이썬 라이브러리
+
+## 내장 함수
+
+- sum() : iterable한 객체가 입력으로 주어졌을 때, 모든 원소의 합 return
+  - iterable은 반복 가능한 객체
+  - lsit, tuple, dictionary, set 등 해당
+
+```
+list = [10, 22, 19, 2, 9, 3]
+sumList = sum(list)
+
+print(sumList)
+```
+
+```
+65
+```
+
+- max() : 파라미터가 2개 이상 들어왔을 때 가장 큰 값 return
+
+```
+list = [1, 2, 3]
+print(max(list))
+```
+
+```
+3
+```
+
+- min() : 파라미터가 2개 이상 들어왔을 때 가장 작은 값 return
+
+```
+list = [1, 2, 3]
+print(min(list))
+```
+
+```
+1
+```
+
+- eval() : 수학 수식이 문자열 형식으로 들어오면 해당 수식을 계산한 결과 return
+
+```
+result = eval("(2 + 4) * 6")
+print(result)
+```
+
+```
+36
+```
+
+- sort() : 리스트 객체의 내부 값이 정렬된 값으로 바로 변경
+
+```
+data = [5, 2, 1, 3, 4]
+data.sort()
+print(data)
+```
+
+```
+[1, 2, 3, 4, 5]
+```
+
+- sorted() : iterable한 객체가 들어왔을 때, 정렬된 결과 return
+  - key 속성으로 정렬 기준 설정
+  - reverse 속성으로 정렬된 결과 리스트를 뒤집을지 여부 설정
+
+```
+result = sorted([('홍길동', 10), ('강낭콩', 20), ('전문가', 15)], key = lambda x: x[1], reverse = True)
+print(result)
+```
+
+```
+[('홍길동', 10), ('전문가', 15), ('강낭콩', 20)]
+```
+
+```
+result = sorted([5, 1, 2, 3, 4]) # 오름차순으로 정렬
+print(result)
+
+result = sorted([5, 1, 2, 3, 4], reverse = True) # 내림차순으로 정렬
+print(result)
+```
+
+```
+[1, 2, 3, 4, 5]
+
+[5, 4, 3, 2, 1]
+```
+
+---
+
+## itertools 라이브러리
+
+- 반복되는 데이터를 처리하는 기능을 포함하고 있는 라이브러리
+- permutations : 순열
+- combinations : 조합
+- product : 중복 허용 순열
+- combinations_with_replacement : 중복 허용 조합
+
+```
+from itertools import permutations, combinations, product, combinations_with_replacement
+
+data = ['A', 'B', 'C']
+
+result = list(permutations(data, 3)) # 모든 순열 구하기
+print(result)
+
+result = list(combinations(data, 2)) #2개를 뽑는 모든 조합 구하기
+print(result)
+
+result = list(product(data, repeat=2)) # 2개를 뽑는 모든 순열 구하기(중복 허용)
+print(result)
+
+result = list(combinations_with_replacement(data, repeat=2)) # 2개를 뽑는 모든 조합 구하기(중복 허용)
+print(result)
+```
+
+```
+# 3개를 뽑는 순열
+[('A', 'B', 'C'), ('A', 'C', 'B'), ('B', 'A', 'C'), ('B', 'C', 'A'), ('C', 'A', 'B'), ('C', 'B', 'A')]
+
+# 2개를 뽑는 조합
+[('A', 'B'), ('A', 'C'), ('B', 'C')]
+
+# 2개를 뽑는 중복허용 순열
+[('A', 'A'), ('A', 'B'), ('A', 'C'), ('B', 'A'), ('B', 'B'), ('B', 'C'), ('C', 'A'), ('C', 'B'), ('C', 'C')]
+
+# 2개를 뽑는 중복허용 조합
+[('A', 'A'), ('A', 'B'), ('A', 'C'), ('B', 'B'), ('B', 'C'), ('C', 'C')]
+```
+
+## heapq 라이브러리
+
+- heap 기능
+- 다익스트라 최단 경로 알고리즘, 우선순위 큐 기능에서 유용
+- heapq 라이브러리
+  - module import
+    ```
+    import heapq
+    ```
+  - 리스트를 heap으로 변환
+    ```
+    List = [4, 1, 3, 5, 2]
+    heapq.heapify(List)
+    print(List)
+    ```
+    ```
+    [1, 2, 3, 4, 5]
+    ```
+  - 원소 추가
+    ```
+    arr = []
+    heapq.heappush(arr, 2)
+    heapq.heappush(arr, 1)
+    heapq.heappush(arr, 4)
+    heapq.heappush(arr, 3)
+    print(arr)
+    ```
+    ```
+    [1, 2, 3, 4]
+    ```
+  - 원소 삭제
+    ```
+    print(arr.heappop(heap))
+    print(arr)
+    ```
+    ```
+    1
+    [2, 3, 4]
+    ```
+
+## bisect 라이브러리
+
+- 이진 탐색을 쉽게 구현할 수 있도록 해주는 라이브러리
+- 정렬된 배열에서 특정한 원소를 찾아야 할 때 효과적
+- bisect_left(a, x) : 정렬된 순서를 유지하면서 리스트 a에 데이터 x를 삽입할 가장 왼쪽 인덱스를 찾는 메서드
+- bisect_right(a, x) : 정렬된 순서를 유지하면서 리스트 a에 데이터 x를 삽입할 가장 오른쪽 인덱스를 찾는 메서드
+
+```
+from bisect import bisect_left, bisect_right
+
+a = [1, 2, 4, 4, 8]
+x = 4
+
+print(bisect_left(a, x))
+print(bisect_right(a, x))
+```
+
+```
+2
+4
+```
+
+## collections 라이브러리
+
+- deque
+
+  - 보통 큐를 구현할 때 이용
+  - deque는 리스트와 다르게 인덱싱, 슬라이싱 기능은 없지만, 연속적으로 나열된 데이터의 시작 부분이나 끝부분에 데이터를 삽입하거나 삭제할 때는 매우 효과적
+  - deque
+
+    - module import
+
+    ```
+    from collections import deque
+    ```
+
+    - 원소 추가
+
+    ```
+    data = deque([2, 3, 4])
+    data.appendleft(1)
+    data.append(5)
+
+    print(list(data))
+    ```
+
+    ```
+    [1, 2, 3, 4, 5]
+    ```
+
+    - 원소 삭제
+
+    ```
+    data.popleft()
+    data.pop()
+
+    print(list(data))
+    ```
+
+    ```
+    [2, 3, 4]
+    ```
+
+- Counter : 등장 횟수를 세는 기능
+
+```
+from collections import Counter
+
+counter = Counter(['red', 'blue', 'red' ,'green', 'blue', 'blue'])
+print(counter['red'])
+print(counter['blue'])
+```
+
+```
+2
+3
+```
+
+## math 라이브러리
+
+- 자주 사용되는 수학적인 기능을 포함하고 있는 라이브러리
+- factorial(n) : n!
+- sqrt(x) : x의 제곱근
+- gcd(a, b) : a와 b의 최대 공약수
+- lcm(a, b) : a와 b의 최소 공배수
+- pi : 상수 파이(pi)
+- e : 자연상수 e
+
+```
+import math
+
+print(math.factorial(5))
+
+print(math.sqrt(9))
+
+print(math.gcd(35, 14))
+
+print(math.lcm(10, 5))
+
+print(math.pi)
+
+print(math.e)
+```
+
+```
+120
+
+3
+
+7
+
+10
+
+3.14159...
+
+2.718...
+```
+
 # 그리디/탐욕 알고리즘 (Greedy Algorithm)
 
 ## 이론
@@ -214,40 +505,6 @@ A 0번 B 1번, C 4번
     - 높다면 선택한 카드 취소
   - 해답 검사 : 카드 합이 최소인지 검사
 - heapq module : 이진 트리 기반의 최소 힙 자료구조
-  - module import
-    ```
-    import heapq
-    ```
-  - 리스트를 heap으로 변환
-    ```
-    List = [4, 1, 3, 5, 2]
-    heapq.heapify(List)
-    print(List)
-    ```
-    ```
-    [1, 2, 3, 4, 5]
-    ```
-  - 원소 추가
-    ```
-    arr = []
-    heapq.heappush(arr, 2)
-    heapq.heappush(arr, 1)
-    heapq.heappush(arr, 4)
-    heapq.heappush(arr, 3)
-    print(arr)
-    ```
-    ```
-    [1, 2, 3, 4]
-    ```
-  - 원소 삭제
-    ```
-    print(arr.heappop(heap))
-    print(arr)
-    ```
-    ```
-    1
-    [2, 3, 4]
-    ```
 
 **예제 입력**
 
