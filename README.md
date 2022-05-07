@@ -629,3 +629,60 @@ dp[18] = 4
 ---
 
 # 트리
+
+## 종류
+
+- 이진 트리 : 노드의 최대 차수가 2인 트리
+
+```
+class Node :
+  def __init__(self, item, left, right) :
+    self.item = item
+    self.left = left
+    self.right = right
+```
+
+- 이진 탐색 트리 : 이진트리의 조건에서 추가적인 조건을 만족하는 트리
+  - 모든 원소는 서로 다른 키
+  - 왼쪽 서브 트리에 있는 원소들은 루트의 키보다 작음
+  - 오른쪽 서브 트리에 있는 원소들은 루트의 키보다 큼
+  - 왼쪽 서브 트리와 오른쪽 서브 트리도 이진 탐색 트리
+
+## 문제
+
+<BOJ 1991> 트리 순회
+
+**전위 순회** : 루트 -> 왼쪽 노드 -> 오른쪽 노드
+
+```
+def preorder(node) :
+  print(node.item, end="")
+  if node.left != '.' : preorder(tree[node.left])
+  if node.right != '.' : preorder(tree[node.right])
+```
+
+**중위 순회** : 왼쪽 노드 -> 루트 -> 오른족 노드
+
+```
+def inorder(node) :
+  if node.left != '.' : inorder(tree[node.left])
+  print(node.item, end="")
+  if node.right != '.' : inorder(tree[node.right])
+```
+
+**후위 순회** : 왼쪽 노드 -> 오른쪽 노드 -> 루트
+
+```
+def postorder(node) :
+  if node.left != '.' : postorder(tree[node.left])
+  if node.right != '.' : postorder(tree[node.right])
+  print(node.item, end="")
+```
+
+**예제 입력**
+
+**예제 출력**
+
+전위 순회 : ABDCEFG
+중위 순회 : DBAECFG
+후위 순회 : DBEGFCA
