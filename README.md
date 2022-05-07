@@ -1,3 +1,18 @@
+# 목차
+
+1. [알아두어야 하는 파이썬 라이브러리](#알아두어야-하는-파이썬-라이브러리)
+
+- [내장 함수](#내장-함수)
+- [itertools 라이브러리](#itertools-라이브러리)
+- [heapq 라이브러리](#heapq-라이브러리)
+- [bisect 라이브러리](#bisect-라이브러리)
+- [collections 라이브러리](#collections-라이브러리)
+- [math 라이브러리](#math-라이브러리)
+
+2. [그리디/탐욕 알고리즘 (Greedy Algorithm)](#그리디탐욕-알고리즘-greedy-algorithm)
+3. [다이나믹 프로그래밍 알고리즘 (Dynamic Programming Algorithm)](#다이나믹-프로그래밍-알고리즘-dynamic-programming-algorithm)
+4. [트리](#트리)
+
 # 알아두어야 하는 파이썬 라이브러리
 
 ## 내장 함수
@@ -288,6 +303,8 @@ print(math.e)
 
 2.718...
 ```
+
+---
 
 # 그리디/탐욕 알고리즘 (Greedy Algorithm)
 
@@ -610,3 +627,5 @@ A = 9, B = 4, C = 8, D = 6, E = 5, F = 3, G = 7
 dp[18] = 4
 
 ---
+
+# 트리
