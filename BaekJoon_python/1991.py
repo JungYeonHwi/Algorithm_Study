@@ -25,7 +25,7 @@ def postorder(node) :
 n = int(input())
 tree = {}
 
-for _ in range(n):
+for _ in range(n) :
   node, left, right = map(str, input().split())
   tree[node] = Node(item=node, left=left, right=right)
 

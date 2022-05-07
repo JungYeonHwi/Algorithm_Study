@@ -1,13 +1,14 @@
-def dfs(n):
+import sys
+from collections import deque
+
+def DFS(n) :
     print(n, end=' ')
-    
     visited[n] = True
     for i in graph[n] :
         if not visited[i] :
-            dfs(i)
+            DFS(i)
 
-def bfs(n) :
-    
+def BFS(n) :
     visited[n] = True
     queue = deque([n])
     
@@ -19,9 +20,6 @@ def bfs(n) :
                 queue.append(i)
                 visited[i] = True
 
-import sys
-from collections import deque
-
 n, m, v = map(int, sys.stdin.readline().split())
 graph = [[] for _ in range(n+1)]
 visited = [False] * (n + 1)
@@ -30,11 +28,13 @@ for _ in range(m) :
     a, b = map(int, sys.stdin.readline().split())
     graph[a].append(b)
     graph[b].append(a)
+    
+print(graph)
 
 for i in range(1, n+1) :
     graph[i].sort()
 
-dfs(v)
+DFS(v)
 visited = [False] * (n + 1)
 print()
-bfs(v)
+BFS(v)

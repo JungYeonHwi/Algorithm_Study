@@ -628,6 +628,115 @@ dp[18] = 4
 
 ---
 
+# 그래프 이론
+
+## 그래프 구조
+
+- 구조 : vertex(node)와 edge로 이루어진 자료구조 (비선형 구조)
+- 오일러 경로 : vertex와 그 vertex들을 잇는 edge가 존재하고 모든 edge를 한 번씩 지나는 경로
+- 해밀턴 경로 : 각 vertex를 한 번씩 방문하는 directed 또는 undirected graph 경로
+- 그래프를 표현하는 방법
+  - 인접 리스트 : 인접한 vertex 들의 상태를 2차원 배열로 구성
+    - 인접하면 1
+    - 인접하지 않으면 0 (같은 노드끼리도 0)
+    - 공간 복잡도 높음
+  - 인접 행렬
+
+## 그래프 탐색
+
+- 그래프 탐색 : 하나의 vertex로부터 시작하여 차례대로 모든 vertex들을 한 번씩 방문하는 것
+
+- **DFS (깊이 우선 탐색)**
+
+  - 루트 vertex(혹은 다른 임의의 vertex)에서 시작해서 다음 분기로 넘어가기 전에 해당 분기를 완벽하게 탐색하는 방법
+  - 한 방향으로 갈 수 있을 때까지 계속 가다가 더 이상 갈 수 없게 되면 다시 돌아와 다른 방향으로 다시 탐색하는 방법
+  - 넓게 탐색하기 전에 깊게 탐색하는 것
+  - BFS보다 조금 더 간단하지만 조금 더 느림
+  - DFS 알고리즘
+
+    - stack을 활용한 DFS
+      1. 시작 vertex를 stack에 삽입
+      2. stack에서 하나의 vertex를 꺼냄
+      3. stack에서 꺼낸 vertex가 아직 방문하지 않은 vertex라면, 방문 표시 이후 이웃 vertex들을 stack에 삽입
+      4. stack에 담긴 vertex가 없을 때까지 반복
+    - 재귀를 활용한 DFS
+      1. 파라미터로 넘어온 vertex가 이미 방문한 vertex 일 경우 return 하도록 기본 조건 설정
+      2. 파라미터로 넘어온 vertex가 방문하지 않은 vertex일 경우 방문 표시
+      3. 인접 vertex에 대해 재귀적으로 함수 호출하며 탐색 진행
+
+- **BFS(너비 우선 탐색)**
+
+  - 루트 vertex(혹은 다른 임의의 vertex)에서 시작해서 인접한 vertex를 먼저 탐색하는 방법
+  - 시작 vertex로붜 가까운 vertex를 먼저 방문하고 멀리 떨어져 있는 vertex를 나중에 방문하는 순회 방법
+  - 깊게 탐색하기 전에 넓게 탐색하는 것
+  - DFS보다 조금 더 복잡
+  - DFS 알고리즘 (queue 이용)
+    1. 방문했던 vertex 목록을 저장해둘 리스트 필요
+    2. 다음으로 방문할 vertex의 목록을 차례대로 저장할 큐 생성
+    3. 더 이상 방문할 vertex가 없을 때까지 루프 돌려줌
+
+  ```
+  import sys
+  from collections import deque
+
+  def DFS(n) :
+      print(n, end=' ')
+      visited[n] = True
+      for i in graph[n] :
+          if not visited[i] :
+              DFS(i)
+
+  def BFS(n) :
+      visited[n] = True
+      queue = deque([n])
+
+      while queue :
+          v = queue.popleft()
+          print(v, end= ' ')
+          for i in graph[v] :
+              if not visited[i] :
+                  queue.append(i)
+                  visited[i] = True
+
+  n, m, v = map(int, sys.stdin.readline().split())
+  graph = [[] for _ in range(n+1)]
+  visited = [False] * (n + 1)
+
+  for _ in range(m) :
+      a, b = map(int, sys.stdin.readline().split())
+      graph[a].append(b)
+      graph[b].append(a)
+
+  print(graph)
+
+  for i in range(1, n+1) :
+      graph[i].sort()
+
+  DFS(start)
+  visited = [False] * (n + 1)
+  print()
+  BFS(start)
+  ```
+
+  ```
+  # DFS
+  # BFS
+  ```
+
+## 문제
+
+<BOJ 2606> 바이러스
+
+**DFS**
+
+2-3-5-6 순으로 바이러스에 걸림 => 4개
+
+**BFS**
+
+2-5-3-6 순으로 바이러스에 걸림 => 4개
+
+---
+
 # 트리
 
 ## 종류
@@ -686,3 +795,5 @@ def postorder(node) :
 전위 순회 : ABDCEFG
 중위 순회 : DBAECFG
 후위 순회 : DBEGFCA
+
+---
