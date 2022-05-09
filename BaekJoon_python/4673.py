@@ -1,10 +1,8 @@
 def gen(n) : 
-    
-    List = []
+
     nSum = 0
     
-    for i in str(n):
-        List.append(i)
+    for i in str(n) :
         nSum = nSum + int(i)
     nSum += n
     return(nSum)
