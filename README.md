@@ -839,6 +839,38 @@ dp[18] = 4
 
 ---
 
+<BOJ> 1018 체스판 다시 칠하기
+
+**예제 입력**
+
+[!1018](./Algorithm/1018%20%EC%9E%85%EB%A0%A5.jpg)
+
+이런식으로 주어질 때
+
+10 13
+BBBBBBBBWBWBW
+BBBBBBBBBWBWB
+BBBBBBBBWBWBW
+BBBBBBBBBWBWB
+BBBBBBBBWBWBW
+BBBBBBBBBWBWB
+BBBBBBBBWBWBW
+BBBBBBBBBWBWB
+WWWWWWWWWWBWB
+WWWWWWWWWWBWB
+
+[!1018예시](./Algorithm/1018%20%EC%98%88%EC%8B%9C.jpg)
+
+다음처럼 8 × 8로 쪼개면서 개수를 result에 추가
+
+[32, 32, 28, 36, 24, 40, 20, 44, 16, 48, 12, 52, 32, 32, 29, 35, 25, 39, 23, 41, 19, 45, 17, 47, 32, 32, 29, 35, 26, 38, 23, 41, 20, 44, 17, 47]
+
+result list에서 제일 최소값
+
+**예제 출력**
+
+12
+
 # 트리
 
 ## 종류
