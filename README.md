@@ -105,6 +105,36 @@ print(result)
 [5, 4, 3, 2, 1]
 ```
 
+- enumerate() : 인자의 값을 추출 할 때 인덱스를 추출하는 기법
+
+```
+lst = ['a','b','c','d']
+for i in enumerate(lst) :
+    print(i)
+```
+
+```
+(0,'a')
+(1,'b')
+(2,'c')
+(3,'d')
+```
+
+- zip() : 여러 개의 순회 가능한(iterable) 객체를 인자로 받아 동일한 개수로 이루어진 자료형을 묶어서 튜플의 형태로 반환
+
+```
+num = [1,2,3]
+alpha = ['a','b','c']
+for pair in zip(num,alpha) :
+    print(pair)
+```
+
+```
+(1,'a')
+(2,'b')
+(3,'c')
+```
+
 ---
 
 ## itertools 라이브러리
