@@ -11,4 +11,4 @@ def solution(spell, dic):
         
         if dicList == spell : answer = 1
     
-    return answeralien language
+    return answer
