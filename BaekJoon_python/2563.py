@@ -18,5 +18,3 @@ for row in board :
     answer += row.count(1)
     
 print(answer)
-
-    

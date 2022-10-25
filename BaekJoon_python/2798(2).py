@@ -1,11 +1,10 @@
-n, m = map(int, input().split())
-a = list(map(int, input().split()))
-b = len(a)
-sList = []
+from itertools import combinations
+        
+n, s = map(int, input().split())
+cards = list(map(int, input().split()))
+maxSum = 0
 
-for i in range(0, b - 2) :
-    for j in range(i + 1, b - 1) :
-        for k in range(j + 1, b) :
-                if a[i] + a[j] + a[k] > m : continue
-                else : sList.append(a[i] + a[j] + a[k])
-print(max(sList))
+for c in combinations(cards, 3):
+    if sum(c) <= s and sum(c) > maxSum:
+        maxSum = sum(c)
+print(maxSum)
