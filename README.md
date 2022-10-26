@@ -1,18 +1,18 @@
 # 목차
 
 1. [알아두어야 하는 파이썬 라이브러리](#알아두어야-하는-파이썬-라이브러리)
+
 - [내장 함수](#내장-함수)
 - [itertools 라이브러리](#itertools-라이브러리)
 - [heapq 라이브러리](#heapq-라이브러리)
 - [bisect 라이브러리](#bisect-라이브러리)
 - [collections 라이브러리](#collections-라이브러리)
 - [math 라이브러리](#math-라이브러리)
+
 2. [그리디/탐욕 알고리즘 (Greedy Algorithm)](#그리디탐욕-알고리즘-greedy-algorithm)
 3. [다이나믹 프로그래밍 알고리즘 (Dynamic Programming Algorithm)](#다이나믹-프로그래밍-알고리즘-dynamic-programming-algorithm)
 4. [브루트 포스 알고리즘 (Brute Force Algorithm)](#브루트-포스-brute-force)
 5. [트리](#트리)
-
-
 
 # 알아두어야 하는 파이썬 라이브러리
 
@@ -159,7 +159,7 @@ print(result)
 result = list(product(data, repeat=2)) # 2개를 뽑는 모든 순열 구하기(중복 허용)
 print(result)
 
-result = list(combinations_with_replacement(data, repeat=2)) # 2개를 뽑는 모든 조합 구하기(중복 허용)
+result = list(combinations_with_replacement(data, 2)) # 2개를 뽑는 모든 조합 구하기(중복 허용)
 print(result)
 ```
 
