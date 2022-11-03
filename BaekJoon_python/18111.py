@@ -1,26 +1,24 @@
 import sys
+from collections import Counter
 
-n, m, b = map(int, sys.stdin.readline().split())
-graph = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
-answer = sys.maxsize
-idx = 0
+n, m, inven = map(int, sys.stdin.readline().split())
+ground = []
+for _ in range(n): ground += map(int, sys.stdin.readline().split())
+height, time = 0, 1000000000000000
 
-for target in range(257):
-    maxTarget, minTarget = 0, 0
+minH = min(ground)
+maxH = max(ground)
+s = sum(ground)
+ground = dict(Counter(ground))
 
-    for i in range(n) :
-        for j in range(m) :
+for i in range(minH, maxH + 1) :
+    if s + inven >= i * n * m :
+        t = 0
+        for key in ground :
+            if key > i : t += (key - i) * ground[key] * 2
+            elif key < i : t += (i - key) * ground[key]
+        if t <= time :
+            time = t
+            height = i
 
-            if graph[i][j] >= target :
-                maxTarget += graph[i][j] - target
-
-            else :
-                minTarget += target - graph[i][j]
-                
-    if maxTarget + b >= minTarget :
-        # 시간 초를 구하고 최저 시간과 비교 
-        if minTarget + (maxTarget * 2) <= answer :
-            answer = minTarget + (maxTarget * 2)
-            idx = target
-
-print(answer, idx)
+print(time, height)
