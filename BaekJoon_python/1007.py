@@ -29,8 +29,8 @@ for _ in range(T) :
             x1Total += x1
             y1Total += y1
         
-        x2Total = x1Total - x1Total
-        y2Total = y1Total - y1Total
+        x2Total = xTotal - x1Total
+        y2Total = yTotal - y1Total
         
         res = min(res, math.sqrt((x1Total - x2Total) ** 2 + (y1Total - y2Total) ** 2))
  
