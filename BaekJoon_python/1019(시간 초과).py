@@ -7,6 +7,5 @@ for i in range(1, n+1) :
     for j in num : 
         answer[int(j)] += 1
         
-        
 for i in answer : 
     print(i, end=" ")
