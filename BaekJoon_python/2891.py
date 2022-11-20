@@ -1,12 +1,20 @@
-N, S, R = map(int, input().split())
-S = list(map(int, input().split()))
-R = list(map(int, input().split()))
+N, S, R = map(int,input().split())
+B = list(map(int,input().split()))
+P = list(map(int,input().split()))
+ca = [0] * N
 
-result = 0
+for i in B : ca[i-1] -= 1
+for i in P : ca[i-1] += 1
+stack = []
 
-for i in S :
-    if i-1 in R : R.remove(i-1)
-    elif i+1 in R : R.remove(i+1)
-    else : result += 1
-        
-print(result)
+for i in ca :
+    if stack :
+        if i == -1 :
+            if stack[-1] == 1 : stack.pop()
+            else : stack.append(i)
+        elif i == 1 :
+            if stack[-1] == -1 : stack.pop()
+            else : stack.append(i)
+        else : stack.append(i)
+    else : stack.append(i)
+print(stack.count(-1))
