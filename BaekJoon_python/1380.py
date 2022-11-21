@@ -8,7 +8,7 @@ while 1 :
     for _ in range(2*n-1) :
         i, a = input().split()
         arr[int(i)-1] += 1
-    res = names[[i for i in range(n) if li[i] != 2][0]]
+    res = names[[i for i in range(n) if arr[i] != 2][0]]
     
     print(f"{case} {res}")
     case += 1
