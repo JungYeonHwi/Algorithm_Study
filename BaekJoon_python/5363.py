@@ -1,8 +1,9 @@
-n = int(input())
-
-for _ in range(n) :
-  data = list(input().split())
-  for i in range(2, len(data)) : 
-    print(data[i], end=' ')
-
-print(data[0], data[1])
+count = int(input())
+words = []
+ 
+for i in range(count) :
+    word = input().split()
+    words.append(word)
+ 
+for i in range(count) :
+    print(" ".join(words[i][2:len(words[i])]) +" "+ " ".join(words[i][0:2]))
