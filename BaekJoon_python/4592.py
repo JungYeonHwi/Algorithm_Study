@@ -1,11 +1,15 @@
 while 1 : 
-    arr = list(map(int, input().split()))
+    answer = []
     
-    if arr[0] == 0 : break
-    else : 
-        stack = []
-        for i in arr[1:] : 
-            if i not in stack : 
-                print(i, end=" ")
-                stack.append(i)
-        print("$")
+    num = input().split()
+    
+    if num[0] == "0" : break
+    num.remove(num[0])
+    
+    for i in num : 
+        if len(answer) == 0 : answer.append(i)
+        elif answer[-1] != i : answer.append(i)
+        
+    answer.append("$")
+    
+    print(*answer)
