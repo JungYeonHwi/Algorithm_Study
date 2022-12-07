@@ -11,11 +11,11 @@ for _ in range(n) :
     
     if int(b) > m : m = int(b)
     
-    answer.sort(key = lambda x : x[1], reverse=True)
+answer.sort(key = lambda x : x[1], reverse=True)
+
+name = []
+for i, j in answer : 
+    if j == m : name.append(i)
     
-    name = []
-    for i, j in answer : 
-        if j == m : name.append(i)
-        
-    name.sort()
-    print(name[0])
+name.sort()
+print(name[0])
