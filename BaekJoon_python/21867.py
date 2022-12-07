@@ -1,10 +1,13 @@
+import sys
+input = sys.stdin.readline
+
 n = int(input())
-s = input()
+arr = list(input().rstrip())
 
-answer = ""
+stack = []
 
-for i in s : 
-    if i not in ["J", "A", "V"] : answer += i
-
-if len(answer) == 0 : print("nojava")
-else : print(answer)
+for i in arr : 
+    if i != "J" and i != "A" and i != "V" : stack.append(i)
+    
+if len(stack) == 0 : print("nojava")
+else : print("".join(stack))
