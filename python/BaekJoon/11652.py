@@ -12,3 +12,5 @@ for i in range(n) :
         dic[card] = 1
 
 result = sorted(dic.items(), key = lambda x : (-x[1],x[0]))
+
+print(result[0][0])
