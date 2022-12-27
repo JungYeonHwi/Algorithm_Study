@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 def adjacent(x) :
     for i in range(x) : 
         if row[x] == row[i] or abs(row[x] - row[i]) == x - i :
