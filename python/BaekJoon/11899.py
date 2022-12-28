@@ -1,19 +1,19 @@
-from sys import stdin
+import sys
 
-s = stdin.readline.rstrip()
+x = sys.stdin.readline().strip()
 
 stack = []
-answer = 0
+count = 0
 
-for i in s : 
-    if i == "(" : 
-        stack.append(i)
-    else : 
-        if len(stack) != 0 and stack[-1] == "(" : 
+for i in x :
+    if i == '(' : stack.append(i)
+    elif i == ')':
+        if stack and stack[-1] == '(' :
             stack.pop()
-        else : 
-            answer += 1
-            
-answer += len(stack)
+        else :
+            count += 1
 
-print(answer)
+if stack :
+    count += len(stack)
+
+print(count)
