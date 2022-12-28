@@ -1,14 +1,24 @@
-def sosu(x) :
-    if x ==1 : return False
-    for i in range(2,int(x**0.5)+1) :
-        if x % i == 0 : return False
-    return True		
+import math
+
+m = 123456
+
+array1 = [True for _ in range(2 * m + 1)]
+array1[0], array1[1] = False, False
+
+for i in range(2, int(math.sqrt(2 * m) + 1)) :
+    if array1[i] : 
+        j = 2 
+        while i * j <= 2 * m : 
+            array1[i * j] = False
+            j += 1 
 
 while 1 :
     n = int(input())
+    if n == 0 : 
+        break
+
     count = 0
-    if n == 0 : break
-    for i in range(n,2*n+1) : 
-        if sosu(i) : 
+    for i in range(n+1, 2 * n + 1) : 
+        if array1[i] : 
             count += 1 
-    print(count)
+    print(count)  
