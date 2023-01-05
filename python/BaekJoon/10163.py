@@ -1,18 +1,20 @@
-import sys
-input = sys.stdin.readline
+n = int(input())
+paper = []
 
-N = int(input())
-matrix = [[0]*1001 for _ in range(1001)]
-for k in range(1, N+1) :
-    x, y, w, h = map(int, input().split())
-    for i in range(x, x+w) :
-        for j in range(y, y+h) :
-            matrix[i][j] = k
-cnt = [0] * (N+1)
-for i in range(1001) :
-    for j in range(1001) :
-        if matrix[i][j] :
-            cnt[matrix[i][j]] += 1
+for i in range(n) :
+    paper.append(list(map(int,input().split())))
 
-for i in range(1,N+1) :
-    print(cnt[i])
+place = [[0]*1001 for _ in range(1001)]
+
+for i, p in enumerate(paper) :
+    cnt=0
+    [row, col, area, height] = p
+    for r in range(row, row+area) :
+        for c in range(col, col+height) :
+            place[r][c] = i + 1
+
+for i in range(n) :
+    cnt = 0
+    for p in place : 
+        cnt += p.count(i+1)
+    print(cnt)
