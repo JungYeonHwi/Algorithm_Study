@@ -1,34 +1,31 @@
-n, c = map(int, input().split())
+n,c = map(int,input().split())
 
-arr = []
-for i in range(n):
-    arr.append(int(input()))
+house = []
+for _ in range(n):
+    x = int(input())
+    house.append(x)
 
-arr.sort()
-
-
-def search(arr, start, end) :
-    while start <= end:
-        mid = (start + end) // 2
-        current = arr[0]
-        count = 1
-
-        for i in range(1, len(arr)):
-            if arr[i] >= current + mid:
-                count += 1
-                current = arr[i]
-
-        if count >= c:
-            global answer
-            start = mid + 1
-            answer = mid
-        else:
-            end = mid - 1
-
+house.sort()
 
 start = 1
-end = arr[-1] - arr[0]
-answer = 0
+end = house[-1] - house[0]
 
-search(arr, start, end)
-print(answer)
+result = 0
+
+while (start <= end) :
+    mid = (start+end)//2 
+    old = house[0]
+    count = 1
+
+    for i in range(1, len(house)) :
+        if house[i] >= old+mid :
+            count+=1
+            old = house[i]
+    
+    if count >=c:
+        start = mid + 1
+        result = mid
+    else:
+        end = mid - 1
+
+print(result)
