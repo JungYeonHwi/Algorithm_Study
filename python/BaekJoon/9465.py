@@ -10,7 +10,7 @@ for _ in range(T) :
     if n > 1 :
         dp[0][1] += dp[1][0]
         dp[1][1] += dp[0][0]
-    for i in range(2,N) :
+    for i in range(2, n) :
         dp[0][i] += max(dp[1][i-1],dp[1][i-2])
         dp[1][i] += max(dp[0][i-1],dp[0][i-2])
 
