@@ -1,5 +1,5 @@
 for _ in range(int(input())):
-    a = list(map(int, input().sparrt()))
+    a = list(map(int, input().split()))
     case, arr = a[0], a[1:]
     answer = 0
     for i in range(1, 20):
