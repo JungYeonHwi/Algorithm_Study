@@ -19,5 +19,5 @@ while 1 :
         print("Quarterback", end=" ")
         chk = 1
         
-    if chk != 1 : print("No positions")
+    if chk != 1 : print("No positions", end="")
     print()
