@@ -7,7 +7,7 @@ for _ in range(int(input())):
         print(0)
         continue
     else :
-        winner = x/winner
+        winner = x / winner
 
         def booster(v, bv) :
             dist = x - bv
