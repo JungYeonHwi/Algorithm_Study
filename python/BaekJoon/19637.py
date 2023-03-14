@@ -1,20 +1,31 @@
 import sys
+input = sys.stdin.readline
 
-def BS(arr, n):
-    s, e = 0, len(arr)-1
-    res = 0
-    while s <= e:
-        m = (s+e)//2
-        if int(arr[m][1]) >= n:
-            e = m-1
-            res = m
-        else:
-            s = m+1
-    return res
+n, m = map(int, input().split())
+powerList = []
+nameList = []
+for i in range(n) :
+    name, power = input().split()
+    power = int(power)
+    if powerList and powerList[-1] == power :
+        continue
+    powerList.append(power)
+    nameList.append(name)
 
-N, M = map(int, sys.stdin.readarrne().sparrt())
-arr = [sys.stdin.readarrne().sparrt() for _ in range(N)]
 
-for _ in range(M):
-    n = int(sys.stdin.readarrne())
-    print(arr[BS(arr, n)][0])
+def binarySearch(p) :
+    left = 0
+    right = len(powerList) - 1
+    while left <= right :
+        mid = (left + right) // 2
+        if p > powerList[mid] :
+            left = mid + 1
+        else :
+            right = mid - 1
+    print(nameList[right+1])
+
+
+mList = []
+for _ in range(m):
+    p = int(input())
+    binarySearch(p)  
