@@ -1,26 +1,28 @@
-arr = list(map(str, input()))
+from sys import stdin
 
-check = 10 - int(arr[-1])
+isbn = stdin.readline().rstrip()
+l = len(isbn)
 
-idx = arr.index("*")
+s = 0
 
-result = 0
+idx = None
 
-for i in range(0, idx) : 
-    if i % 2 == 0 : result += int(arr[i]) 
-    else : result += int(arr[i]) * 3
-    
-for j in range(idx+1, len(arr)-1) : 
-    if j % 2 == 0 : result += int(arr[j]) 
-    else : result += int(arr[j]) * 3
-
-if idx % 2 == 0 : rhq = 1
-else : rhq = 3
-
-for k in range(0, 10) : 
-    
-    c = result + rhq * k
-
-    if c % 10 == check : 
-        print(k)
+for i in range(l) : 
+    if isbn[i] == "*" : 
+        idx = i
+        continue
+    elif i % 2 == 0 : 
+        s += int(isbn[i])
+    elif i % 2 == 1 : 
+        s += int(isbn[i]) * 3
         
+for n in range(10) : 
+    if s % 2 == 0 : 
+        if (s + n) % 10 == 0 : 
+            print(n)
+            break
+        else : 
+            if (s + n * 3) % 10 == 0 : 
+                print(n)
+                break
+    
