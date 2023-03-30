@@ -1,9 +1,8 @@
 import sys
-import math
 input = sys.stdin.readline()
 
 N = int(input())
-M = int(input())
+M = list(input().rstrip())
 K = int(input())
 
 if "1" not in M : 
@@ -17,8 +16,7 @@ if K == 0 :
 count = 0
 
 for i in range(len(M) - 1, -1, -1) : 
-    if M[i] == "1" : 
-        break
+    if M[i] == "1" : break
     if M[i] == "0" : count += 1
     
 if count >= K : print("YES")
