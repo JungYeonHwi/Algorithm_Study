@@ -12,4 +12,4 @@ for _ in range(K):
         else:
             cnt += c;
             res += t+r;    
-    print(res)s
+    print(res)
