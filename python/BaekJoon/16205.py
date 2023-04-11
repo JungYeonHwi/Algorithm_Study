@@ -1,54 +1,39 @@
-n, s = map(str, input().split())
-answer = ["", "", ""]
+import sys
+import re
+from unittest import result
 
-if n == "1" : 
-    answer[0] = s
-    value = s[0].upper() + s[1:]
-    answer[2] = value
-    
-    value = ""
-    
-    for i in s : 
-        if i.isupper() : 
-            value += "_" + i.lower()
-        else : 
-            value += i
-    
-    answer[1] = value
-    
-elif n == "2" : 
-    answer[1] = s
-    
-    idx = []
-    
-    for i in range(len(s)) : 
-        if s[i] == "_" : 
-            idx.append(i+1)
-    
-    for j in idx : 
-        s = s.replace(s[j], s[j].upper())
-        
-    s = s.replace("_", "") 
-    
-    answer[0] = s
-    value = s[0].upper() + s[1:]
-    answer[2] = value 
-            
-elif n == "3" : 
-    answer[2] = s
+t, name = sys.stdin.readline().strip().split()
 
-    s = s.replace(s[0], s[0].lower())
-    answer[0] = s
-    
-    value = ""
-    
-    for i in s : 
-        if i.isupper() : 
-            value += "_" + i.lower()
-        else : 
-            value += i
-    
-    answer[1] = value
-    
-for i in answer : 
-    print(i)
+firstWord = [name[0]]
+rootWords = []  
+
+if t == '1' :
+    rootWords = re.findall('[A-Z][a-z]*', name)
+
+    for i in range(1,len(name)):
+        if name[i].isupper():
+            break
+        else:
+            firstWord[-1] += name[i]
+    rootWords = firstWord + rootWords
+
+elif t == '2' :
+    rootWords = name.split('_')
+
+elif t == '3' :
+    rootWords = re.findall('[A-Z][a-z]*', name)
+
+for i in range(len(rootWords)) :
+    rootWords[i] = rootWords[i].title()
+result3 = "".join(rootWords)
+
+rootWords[0] = rootWords[0].lower()
+result1 = "".join(rootWords)
+
+for i in range(1, len(rootWords)) :
+    rootWords[i] = rootWords[i].lower()
+result2 = "_".join(rootWords)
+
+print(result1)
+print(result2)
+print(result3)
