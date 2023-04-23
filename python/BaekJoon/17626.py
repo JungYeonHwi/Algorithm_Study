@@ -1,16 +1,20 @@
-import sys
-input = sys.stdin.readline
+import math
+ 
+def fourSquares(n):
+    if int(math.sqrt(n)) == math.sqrt(n):
+        return 1
 
-N = int(input())
-dp = [0,1]
+    for i in range(1, int(math.sqrt(n)) + 1):
+        if int(math.sqrt(n - i**2)) == math.sqrt(n - i**2):
+            return 2
 
-for i in range(2, N+1):
-    value = 1e9
-    j = 1
+    for i in range(1, int(math.sqrt(n)) + 1):
+        for j in range(1, int(math.sqrt(n - i**2)) + 1):
+            if int(math.sqrt(n - i**2 - j**2)) == math.sqrt(n - i**2 - j**2):
+                return 3
 
-    while (j**2) <= i :
-        value = min(value, dp[i - (j**2)])
-        j += 1
-
-    dp.append(value + 1)
-print(dp[N])
+    return 4
+ 
+ 
+n = int(input())
+print(fourSquares(n))
