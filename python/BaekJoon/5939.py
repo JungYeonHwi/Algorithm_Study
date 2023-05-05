@@ -1,0 +1,1 @@
+[print(" ".join(list(map(str, x)))) for x in sorted([list(map(int, input().split())) for y in range(int(input()))])]
