@@ -18,4 +18,3 @@ ans = 0
 if ccw(x1, y1, x2, y2, x3, y3) * ccw(x1, y1, x2, y2, x4, y4) < 0 and ccw(x3, y3, x4, y4, x1, y1) * ccw(x3, y3, x4, y4, x2, y2) < 0:
     ans = 1
 print(ans)
-출처: https://ca.ramel.be/135 [MemoLOG:티스토리]
