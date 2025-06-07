@@ -1,10 +1,9 @@
 function solution(array) {
   var answer = 0;
 
-  array = array.sort((a, b) => a - b);
+  let filteredArray = array.sort((a, b) => a - b);
 
-  let idx = Math.floor(array.length / 2);
-  answer = array[idx];
+  answer = filteredArray[(array.length - 1) / 2];
 
   return answer;
 }
