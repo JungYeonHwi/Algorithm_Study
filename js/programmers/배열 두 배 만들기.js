@@ -1,9 +1,4 @@
 function solution(numbers) {
-  var answer = [];
-
-  for (var i = 0; i < numbers.length; i++) {
-    answer.push(numbers[i] * 2);
-  }
-
+  var answer = numbers.map((item) => item * 2);
   return answer;
 }
