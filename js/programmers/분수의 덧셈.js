@@ -1,45 +1,22 @@
-function solution(denum1, num1, denum2, num2) {
+let getGCD = (num1, num2) => {
+  let gcd = 1;
+
+  for (let i = 2; i <= Math.min(num1, num2); i++) {
+    if (num1 % i === 0 && num2 % i === 0) gcd = i;
+  }
+
+  return gcd;
+};
+
+function solution(numer1, denom1, numer2, denom2) {
   var answer = [];
 
-  let a = num1;
-  let b = num2;
+  let top = numer1 * denom2 + numer2 * denom1;
+  let bottom = denom1 * denom2;
 
-  while (a % b !== 0) {
-    let r = a % b;
+  let gcd = getGCD(top, bottom);
 
-    if (r !== 0) {
-      a = b;
-      b = r;
-    }
-  }
-
-  let min = (num1 * num2) / b;
-
-  let quotient1 = min / num1;
-  let quotient2 = min / num2;
-
-  let newdenum1 = quotient1 * denum1;
-  let newdenum2 = quotient2 * denum2;
-
-  let newdenum = newdenum1 + newdenum2;
-
-  a = min;
-  b = newdenum;
-
-  while (a % b !== 0) {
-    let r = a % b;
-
-    if (r !== 0) {
-      a = b;
-      b = r;
-    }
-  }
-
-  let numerator = newdenum / b;
-  let denominator = min / b;
-
-  answer.push(numerator);
-  answer.push(denominator);
+  answer = [top / gcd, bottom / gcd];
 
   return answer;
 }
