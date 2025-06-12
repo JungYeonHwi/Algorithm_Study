@@ -1,12 +1,19 @@
 function solution(dots) {
   var answer = 0;
 
-  dots.sort((a, b) => a[0] - b[0]);
+  let x = [];
+  let y = [];
 
-  let oneSide = Math.abs(dots[0][1] - dots[1][1]);
-  let otherSide = Math.abs(dots[0][0] - dots[2][0]);
+  x = dots.map((item) => item[0]);
+  y = dots.map((item) => item[1]);
 
-  answer = oneSide * otherSide;
+  let xx = new Set(x);
+  let yy = new Set(y);
+
+  let xxx = [...xx].sort((a, b) => a - b);
+  let yyy = [...yy].sort((a, b) => a - b);
+
+  answer = (xxx[1] - xxx[0]) * (yyy[1] - yyy[0]);
 
   return answer;
 }
