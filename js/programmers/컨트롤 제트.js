@@ -1,23 +1,15 @@
 function solution(s) {
   var answer = 0;
 
-  let stack = [];
+  s = s.split(" ");
 
-  let arr = s.split(" ");
-
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === "Z") {
-      if (arr[i - 1]) {
-        arr.splice(i - 1, 2);
-        i -= 2;
-      } else {
-        arr.splice(i, 1);
-        i--;
-      }
+  for (i = 0; i < s.length; i++) {
+    if (s[i] === "Z") {
+      answer -= Number(s[i - 1]);
+    } else {
+      answer += Number(s[i]);
     }
   }
-
-  answer = arr.reduce((a, b) => a * 1 + b * 1, 0);
 
   return answer;
 }
