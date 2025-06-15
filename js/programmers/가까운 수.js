@@ -1,23 +1,12 @@
 function solution(array, n) {
   var answer = 0;
 
-  let arr = [];
+  array = array.sort((a, b) => a - b);
 
-  array.forEach((item) => {
-    arr.push(Math.abs(item - n));
-  });
+  let arr = array.map((item) => [item, Math.abs(item - n)]);
+  arr.sort((a, b) => a[1] - b[1]);
 
-  const min = Math.min(...arr);
-
-  if (arr.indexOf(min) !== arr.lastIndexOf(min)) {
-    const indexOne = arr.indexOf(min);
-    const indexTwo = arr.lastIndexOf(min);
-
-    answer = Math.min(array[indexOne], array[indexTwo]);
-  } else {
-    const idx = arr.indexOf(Math.min(...arr));
-    answer = array[idx];
-  }
+  answer = arr[0][0];
 
   return answer;
 }
