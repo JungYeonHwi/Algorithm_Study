@@ -1,13 +1,4 @@
 function solution(str1, str2) {
-  var answer = 0;
-
-  let idx = str1.indexOf(str2);
-
-  if (idx == -1) {
-    answer = 2;
-  } else {
-    answer = 1;
-  }
-
+  var answer = str1.includes(str2) ? 1 : 2;
   return answer;
 }
