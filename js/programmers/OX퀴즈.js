@@ -1,32 +1,14 @@
 function solution(quiz) {
   var answer = [];
 
-  quiz.forEach((item) => {
-    const oneQuiz = item.split(" ");
+  for (i = 0; i < quiz.length; i++) {
+    let arr = [...quiz[i].split(" ")];
+    let ans = 0;
+    if (arr[1] === "+") ans = Number(arr[0]) + Number(arr[2]);
+    else ans = Number(arr[0]) - Number(arr[2]);
 
-    const X = Number(oneQuiz[0]);
-    const Y = Number(oneQuiz[2]);
-
-    let calc = 0;
-
-    if (oneQuiz[1] === "+") {
-      calc = X + Y;
-    }
-
-    if (oneQuiz[1] === "-") {
-      calc = X - Y;
-    }
-
-    const result = Number(oneQuiz[4]);
-
-    if (calc === result) {
-      answer.push("O");
-    }
-
-    if (calc !== result) {
-      answer.push("X");
-    }
-  });
+    ans.toString() === arr[4] ? answer.push("O") : answer.push("X");
+  }
 
   return answer;
 }
