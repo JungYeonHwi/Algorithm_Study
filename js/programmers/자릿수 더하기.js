@@ -1,11 +1,5 @@
 function solution(n) {
-  var answer = 0;
-
-  arr = String(n).split("");
-
-  for (let i = 0; i < arr.length; i++) {
-    answer += Number(arr[i]);
-  }
-
+  if (n === 0) return 0;
+  var answer = [...n.toString()].reduce((a, b) => Number(a) + Number(b));
   return answer;
 }
