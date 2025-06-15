@@ -1,9 +1,11 @@
 function solution(array) {
-  var answer = [];
-  let value = Math.max(...array);
+  var answer = [0, 0];
 
-  answer.push(value);
-  answer.push(array.indexOf(value));
+  for (i = 0; i < array.length; i++) {
+    if (array[i] >= answer[0]) {
+      answer = [array[i], i];
+    }
+  }
 
   return answer;
 }
