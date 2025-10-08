@@ -1,35 +1,15 @@
 function solution(age) {
-  var answer = "";
+  const ageArr = String(age).split("");
 
-  var value = String(age);
+  const ageIn962 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
 
-  let arr = value.split("");
+  let ans = "";
 
-  for (let i = 0; i < arr.length; i++) {
-    let data = arr[i];
+  for (let i = 0; i < ageArr.length; i++) {
+    let index = Number(ageArr[i]);
 
-    if (data == "0") {
-      answer += "a";
-    } else if (data == "1") {
-      answer += "b";
-    } else if (data == "2") {
-      answer += "c";
-    } else if (data == "3") {
-      answer += "d";
-    } else if (data == "4") {
-      answer += "e";
-    } else if (data == "5") {
-      answer += "f";
-    } else if (data == "6") {
-      answer += "g";
-    } else if (data == "7") {
-      answer += "h";
-    } else if (data == "8") {
-      answer += "i";
-    } else if (data == "9") {
-      answer += "j";
-    }
+    ans += ageIn962[index];
   }
 
-  return answer;
+  return ans;
 }
