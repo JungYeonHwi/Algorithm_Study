@@ -1,7 +1,21 @@
 function solution(array) {
-  let m = new Map();
-  for (let n of array) m.set(n, (m.get(n) || 0) + 1);
-  m = [...m].sort((a, b) => b[1] - a[1]);
+  var answer = 0;
 
-  return m.length === 1 || m[0][1] > m[1][1] ? m[0][0] : -1;
+  let m = Math.max(...array);
+  let arr = new Array(m + 1).fill(0);
+
+  for (let i = 0; i < array.length; i++) {
+    arr[array[i]] += 1;
+  }
+
+  let val = Math.max(...arr);
+
+  for (let i = 0; i < arr.length; i++) {
+    if (val === arr[i]) {
+      if (answer === 0) answer = i;
+      else return -1;
+    }
+  }
+
+  return answer;
 }
