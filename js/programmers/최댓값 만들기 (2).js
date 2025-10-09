@@ -1,17 +1,11 @@
 function solution(numbers) {
   var answer = 0;
+  let len = numbers.length;
 
-  let BruteForce = [];
+  numbers.sort((a, b) => a - b);
 
-  for (let i = 0; i < numbers.length; i++) {
-    for (let j = 0; j < numbers.length; j++) {
-      if (i !== j) {
-        BruteForce.push(numbers[i] * numbers[j]);
-      }
-    }
-  }
-
-  answer = Math.max(...BruteForce);
-
-  return answer;
+  return (answer = Math.max(
+    numbers[0] * numbers[1],
+    numbers[len - 1] * numbers[len - 2]
+  ));
 }
