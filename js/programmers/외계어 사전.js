@@ -1,23 +1,12 @@
 function solution(spell, dic) {
   var answer = 2;
 
-  let arr = [];
+  for (let i = 0; i < dic.length; i++) {
+    let item = dic[i].split("").sort().join("");
+    let j = spell.sort().join("");
 
-  dic.forEach(function (i) {
-    let dicList = i.split("");
-    let s = new Set();
-    dicList.forEach(function (value) {
-      s.add(value);
-    });
-    arr = [...s];
-
-    arr.sort();
-    spell.sort();
-
-    if (arr.toString() == spell.toString()) {
-      answer = 1;
-    }
-  });
+    if (item === j) return 1;
+  }
 
   return answer;
 }
