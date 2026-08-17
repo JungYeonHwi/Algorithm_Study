@@ -6,6 +6,11 @@ on:
     paths:
       - '[0-9][0-9][0-9][0-9]-*/**'
 
+# 같은 브랜치에서 동시에 실행되지 않도록 설정
+concurrency:
+  group: move-leetcode-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -26,7 +31,6 @@ jobs:
 
           TARGET_DIR="js/LeetCode"
 
-          echo "Creating target directory: $TARGET_DIR"
           mkdir -p "$TARGET_DIR"
 
           found=0
@@ -53,12 +57,19 @@ jobs:
 
           git add -A
 
-          echo "Current changes:"
+          echo "=== Current changes ==="
           git status --short
 
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          echo "=== Amend previous commit ==="
           git commit --amend --no-edit
 
-          echo "Amended commit:"
+          echo "=== Amended commit ==="
           git log -1 --oneline
 
-          git push --force-with-lease origin HEAD:${GITHUB_REF_NAME}
+          echo "=== Push ==="
+          git push --force origin HEAD:${GITHUB_REF_NAME}
