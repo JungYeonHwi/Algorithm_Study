@@ -1,12 +1,12 @@
 name: Move LeetCode Solutions
 
 on:
-  workflow_dispatch:
   push:
     paths:
       - '[0-9][0-9][0-9][0-9]-*/**'
 
-# 같은 브랜치에서 동시에 실행되지 않도록 설정
+  workflow_dispatch:
+
 concurrency:
   group: move-leetcode-${{ github.ref }}
   cancel-in-progress: false
@@ -22,7 +22,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
-          fetch-depth: 2
+          fetch-depth: 3
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Move LeetCode solutions
@@ -48,7 +48,7 @@ jobs:
             exit 0
           fi
 
-      - name: Amend previous commit
+      - name: Squash LeetHub commits
         run: |
           set -e
 
@@ -60,15 +60,19 @@ jobs:
           echo "=== Current changes ==="
           git status --short
 
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
+          # 현재 커밋 메시지 저장
+          COMMIT_MESSAGE="$(git log -1 --pretty=%B)"
 
-          echo "=== Amend previous commit ==="
-          git commit --amend --no-edit
+          echo "=== Current commit ==="
+          git log -2 --oneline
 
-          echo "=== Amended commit ==="
+          # 직전 2개의 커밋을 하나로 합침
+          git reset --soft HEAD~2
+
+          # 현재 작업 내용 + 두 커밋의 내용을 하나의 커밋으로 생성
+          git commit -m "$COMMIT_MESSAGE"
+
+          echo "=== Final commit ==="
           git log -1 --oneline
 
           echo "=== Push ==="
