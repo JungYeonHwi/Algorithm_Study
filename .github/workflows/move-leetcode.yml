@@ -1,0 +1,53 @@
+name: Move LeetCode Solutions
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '[0-9][0-9][0-9][0-9]-*/**'
+
+jobs:
+  move-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Move LeetCode solutions
+        run: |
+          set -e
+
+          TARGET_DIR="js/LeetCode"
+
+          echo "Creating target directory: $TARGET_DIR"
+          mkdir -p "$TARGET_DIR"
+
+          found=0
+
+          for d in [0-9][0-9][0-9][0-9]-*; do
+            if [ -d "$d" ]; then
+              echo "Moving: $d -> $TARGET_DIR/"
+              mv "$d" "$TARGET_DIR/"
+              found=1
+            fi
+          done
+
+          if [ "$found" -eq 0 ]; then
+            echo "No LeetCode directories found."
+          fi
+
+      - name: Commit & Push changes
+        run: |
+          if git status --porcelain | grep .; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+            git add -A
+            git commit -m "chore: move LeetCode solutions"
+            git push
+          else
+            echo "No changes to commit."
+          fi
